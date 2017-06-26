@@ -3,8 +3,53 @@
   "version": "1.0.0",
   "description": "game which let's you steer two robots, who move exactly the opposite way from one another.",
   "main": " ",
+  "env": {
+    "browser": true
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prebuild": "npm run cleanclient",
+    "build": "NODE_ENV=production webpack -p",
+    "cleanclient": "del 'dist'",
+    "coverage": "jest --coverage",
+    "coverage:watch": "jest --coverage --watch",
+    "coveralls": "cat ./coverage/lcov.info | coveralls",
+    "dev": "webpack-dev-server --inline",
+    "fulltest": "parallelshell \"npm run lint:watch\" \"npm run test:watch\"",
+    "lint": "eslint \"./src\"",
+    "lint:watch": "watch \"npm run lint\" ./src",
+    "prestart": "npm run build",
+    "start": "http-server ./dist -o",
+    "test": "jest",
+    "test:debug": "node --debug-brk ./node_modules/.bin/jest --runInBand",
+    "test:watch": "jest --watch"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
+    },
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}",
+      "!**/node_modules/**"
+    ],
+    "coverageReporters": [
+      "json",
+      "lcov",
+      "text",
+      "text-summary"
+    ]
+  },
+  "eslintConfig": {
+    "extends": "airbnb",
+    "no-param-reassign": [
+      "warning",
+      {
+        "props": false
+      }
+    ],
+    "plugins": [
+      "import"
+    ]
   },
   "keywords": [
     "game",
@@ -13,5 +58,38 @@
     "javascript"
   ],
   "author": "Christoph Benjamin Weber",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.23.1",
+    "babel-jest": "^20.0.3",
+    "babel-loader": "^7.0.0",
+    "babel-preset-env": "^1.2.1",
+    "copy-webpack-plugin": "^4.0.1",
+    "coveralls": "^2.13.0",
+    "css-loader": "^0.28.0",
+    "del-cli": "^1.0.0",
+    "eslint": "^4.1.1",
+    "eslint-config-airbnb": "^15.0.1",
+    "eslint-plugin-import": "^2.0.1",
+    "eslint-plugin-jsx-a11y": "^5.0.3",
+    "eslint-plugin-react": "^7.1.0",
+    "file-loader": "^0.11.0",
+    "html-webpack-plugin": "^2.28.0",
+    "http-server": "^0.10.0",
+    "jest": "^20.0.4",
+    "parallelshell": "^3.0.1",
+    "regenerator-runtime": "^0.10.3",
+    "style-loader": "^0.18.2",
+    "supertest": "^3.0.0",
+    "sw-precache": "^5.1.0",
+    "url-loader": "^0.5.8",
+    "watch": "^1.0.1",
+    "web-audio-test-api": "^0.5.2",
+    "webpack": "^3.0.0",
+    "webpack-bundle-analyzer": "^2.3.1",
+    "webpack-dev-server": "^2.4.1"
+  },
+  "dependencies": {
+    "offline-plugin": "^4.6.2"
+  }
 }
