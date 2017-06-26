@@ -1,3 +1,4 @@
+[![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](http://github.com/badges/stability-badges)
 # bibot - Work in progress
 
 Imagine a fabric. A fully automated fabric, no humans in sight. This fabric only produces one kind of product, exactly the same things, over an over again, no variation.
@@ -17,7 +18,7 @@ I had this game idea for a while, and just try to give it a go.
 
 It is mainly meant to be played on mobile devices, but will work fine on desktop/laptops as well.
 
-This game will be written in modern JavaScript, with a modern build and dev toolset, like I love to do it.
+This game will be written in modern JavaScript, with a modern build and dev toolset, like I love to do it. The graphics will be pretty low, but I'll give my best.
 
 Sadly, it's very possibly, this will never be finished.
 
