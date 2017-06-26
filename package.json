@@ -1,0 +1,17 @@
+{
+  "name": "bibot",
+  "version": "1.0.0",
+  "description": "game which let's you steer two robots, who move exactly the opposite way from one another.",
+  "main": " ",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "game",
+    "robot",
+    "puzzle",
+    "javascript"
+  ],
+  "author": "Christoph Benjamin Weber",
+  "license": "MIT"
+}
