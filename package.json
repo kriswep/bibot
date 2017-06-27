@@ -14,6 +14,7 @@
     "coverage:watch": "jest --coverage --watch",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "dev": "webpack-dev-server --inline",
+    "format": "prettier-eslint \"src/**/*.js\" --write",
     "fulltest": "parallelshell \"npm run lint:watch\" \"npm run test:watch\"",
     "lint": "eslint \"./src\"",
     "lint:watch": "watch \"npm run lint\" ./src",
@@ -41,12 +42,14 @@
   },
   "eslintConfig": {
     "extends": "airbnb",
-    "no-param-reassign": [
-      "warning",
-      {
-        "props": false
-      }
-    ],
+    "rules": {
+      "no-param-reassign": [
+        "warn",
+        {
+          "props": false
+        }
+      ]
+    },
     "plugins": [
       "import"
     ]
@@ -67,17 +70,18 @@
     "copy-webpack-plugin": "^4.0.1",
     "coveralls": "^2.13.0",
     "css-loader": "^0.28.0",
-    "del-cli": "^1.0.0",
-    "eslint": "^4.1.1",
+    "del-cli": "^1.1.0",
+    "eslint": "^3.19.0",
     "eslint-config-airbnb": "^15.0.1",
     "eslint-plugin-import": "^2.0.1",
-    "eslint-plugin-jsx-a11y": "^5.0.3",
+    "eslint-plugin-jsx-a11y": "^5.0.1",
     "eslint-plugin-react": "^7.1.0",
     "file-loader": "^0.11.0",
     "html-webpack-plugin": "^2.28.0",
     "http-server": "^0.10.0",
     "jest": "^20.0.4",
     "parallelshell": "^3.0.1",
+    "prettier-eslint-cli": "^4.1.1",
     "regenerator-runtime": "^0.10.3",
     "style-loader": "^0.18.2",
     "supertest": "^3.0.0",
@@ -85,7 +89,7 @@
     "url-loader": "^0.5.8",
     "watch": "^1.0.1",
     "web-audio-test-api": "^0.5.2",
-    "webpack": "^3.0.0",
+    "webpack": "^2.2.0",
     "webpack-bundle-analyzer": "^2.3.1",
     "webpack-dev-server": "^2.4.1"
   },
