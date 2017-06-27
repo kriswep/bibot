@@ -1,11 +1,11 @@
 // eslint-disable-next-line
-const webpack = require('webpack');
+const webpack = require("webpack");
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const OfflinePlugin = require('offline-plugin');
 
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const production = process.env.NODE_ENV === 'production';
 const BUILD_DIR = path.resolve(__dirname, 'dist');
