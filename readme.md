@@ -6,7 +6,7 @@ This product are knee big robot model on two chainwheels. Obviously, thats `The 
 
 They always come in a pair of two, controlled with a single remote. That's the whole deal. Just two exact same robots with one remote, doing exactly the same thing...
 
-One day, for the very first time, one pair falls through the automated quality assurance test. This pair, whait for it, each of the robot in this pair moves exactly in the opposite direction from the other. You steer right, one moves right, the other left. You steer forward, one goes forward, one backwards.
+One day, for the very first time, one pair falls through the automated quality assurance test. This pair, wait for it, each of the robot in this pair moves exactly in the opposite direction from the other. You steer right, one moves right, the other left. You steer forward, one goes forward, one backwards.
 
 As any good AI would do, our fabrics AI files this incident under the name `Boby and Billy`. Case number `1-782`. And, as any good AI would have ordered, the robots get dumped in the fabrics huge recycle system.
 
@@ -22,4 +22,4 @@ This game will be written in modern JavaScript, with a modern build and dev tool
 
 Sadly, it's very possibly, this will never be finished.
 
-But it is [MIT-](LICENSE)Licensed.
+But, it is [MIT-](LICENSE)Licensed.
