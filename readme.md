@@ -1,4 +1,4 @@
-[![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](http://github.com/badges/stability-badges)
+[![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](http://github.com/badges/stability-badges) [![Build Status](https://travis-ci.org/kriswep/bibot.svg?branch=master)](https://travis-ci.org/kriswep/bibot) [![Coverage Status](https://coveralls.io/repos/github/kriswep/bibot/badge.svg?branch=master)](https://coveralls.io/github/kriswep/bibot?branch=master)
 # bibot - Work in progress
 
 Imagine a fabric. A fully automated fabric, no humans in sight. This fabric only produces one kind of product, exactly the same things, over an over again, no variation.
