@@ -2,7 +2,7 @@
 import * as OfflinePluginRuntime from 'offline-plugin/runtime';
 import WTGM from './wtgm';
 import ResourceLoader, { ResourceType } from './resourceLoader';
-import './ui';
+import { initUI } from './ui';
 
 import './css/main.css';
 // import './css/ui.css';
@@ -34,7 +34,7 @@ export default function preloadResources(canvas, callback) {
 
   const rl = new ResourceLoader(printProgressBar, callback);
 
-  // rl.addResource('./img/sprite.png', null, ResourceType.IMAGE);
+  rl.addResource('./img/sprite.png', null, ResourceType.IMAGE);
   // rl.addResource('./img/back.png', null, ResourceType.IMAGE);
 
   rl.startPreloading();
@@ -42,7 +42,21 @@ export default function preloadResources(canvas, callback) {
   printProgressBar();
 }
 
-window.addEventListener('load', WTGM.init.bind(null, preloadResources));
+export function ready(fn) {
+  if (document.readyState !== 'loading') {
+    fn();
+  } else {
+    document.addEventListener('DOMContentLoaded', fn);
+  }
+}
+
+export function init() {
+  initUI();
+  WTGM.init(preloadResources);
+}
+
+ready(init);
+
 window.addEventListener('resize', WTGM.resize);
 window.addEventListener('keydown', WTGM.handleKeyDown);
 
@@ -69,7 +83,6 @@ window.addEventListener('mouseup', (e) => {
 window.addEventListener(
   'touchstart',
   (e) => {
-    e.preventDefault();
     WTGM.touching = 1;
     WTGM.touchStart = new Date().getTime();
     // touchHandler(e.touches[0]);
@@ -80,7 +93,6 @@ window.addEventListener(
 window.addEventListener(
   'touchmove',
   (e) => {
-    e.preventDefault();
     Array.from(e.touches).map(touch => touchHandler(touch));
   },
   false,

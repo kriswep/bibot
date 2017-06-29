@@ -1,10 +1,10 @@
 /* globals test expect jest window document Event */
 import * as OfflinePluginRuntime from 'offline-plugin/runtime';
 import './__helpers__/app.helper';
-import preloadResources, { updateHandler } from './app';
+import preloadResources, { updateHandler, ready } from './app';
 import WTGM from './wtgm';
 // import ResourceLoader from './resourceLoader';
-// import './ui';
+import { initUI } from './ui';
 
 jest.mock('./wtgm', () => ({
   setScore: jest.fn(),
@@ -12,7 +12,9 @@ jest.mock('./wtgm', () => ({
   toggleBaby: jest.fn(),
 }));
 
-jest.mock('./ui', () => true);
+jest.mock('./ui', () => ({
+  initUI: jest.fn(),
+}));
 
 jest.mock('./wtgm', () => ({
   init: jest.fn(),
@@ -24,11 +26,37 @@ jest.mock('offline-plugin/runtime', () => ({
   applyUpdate: jest.fn(),
 }));
 
+test('app should have ready helper', () => {
+  expect(ready).toBeDefined();
+  const fn = jest.fn();
+  let state = 'complete';
+  Object.defineProperty(document, 'readyState', {
+    get() {
+      return state;
+    },
+  });
+
+  ready(fn);
+  expect(fn).toBeCalled();
+  fn.mockClear();
+
+  state = 'loading';
+
+  ready(fn);
+  expect(fn).not.toBeCalled();
+  const event = new Event('DOMContentLoaded');
+  document.dispatchEvent(event);
+  expect(fn).toBeCalled();
+
+  fn.mockClear();
+});
+
 test('app should kickoff resource preloading', (done) => {
   // dispatch action which sould trigger WTGM.init
   const event = new Event('load');
   window.dispatchEvent(event);
   expect(WTGM.init).toBeCalled();
+  expect(initUI).toBeCalled();
 
   expect(
     preloadResources.bind(null, 'canvas', () => {

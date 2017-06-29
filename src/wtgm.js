@@ -22,7 +22,7 @@ const WTGM = {
     // these will change when the screen is resize
     WTGM.currentWidth = WTGM.WIDTH;
     WTGM.currentHeight = WTGM.HEIGHT;
-    // WTGM is our canvas element
+    // WTGM gets our canvas element
     WTGM.canvas = document.getElementsByTagName('canvas')[0];
     // it's important to set WTGM
     // otherwise the browser will
@@ -35,8 +35,8 @@ const WTGM = {
 
     /* Preload!! */
     preloadResources(WTGM.canvas, () => {
-      WTGM.tex.src = WTGM.texSrc;
-      WTGM.back.src = WTGM.backSrc;
+      // WTGM.tex.src = WTGM.texSrc;
+      // WTGM.back.src = WTGM.backSrc;
 
       WTGM.resize(); // we're ready to resize
 
@@ -110,7 +110,6 @@ const WTGM = {
     if (WTGM.life <= 0) {
       WTGM.endGame();
     }
-    WTGM.generateBalloon();
 
     // update objects
     WTGM.objects.forEach((object) => {
@@ -125,7 +124,7 @@ const WTGM = {
     WTGM.ctx.clearRect(0, 0, WTGM.canvas.width, WTGM.canvas.height);
     WTGM.ctx.fillStyle = '#2222dd'; // '#7c4f22';
     WTGM.ctx.fillRect(0, 0, WTGM.canvas.width, WTGM.canvas.height);
-    WTGM.ctx.drawImage(WTGM.back, 0, 0);
+    // WTGM.ctx.drawImage(WTGM.back, 0, 0);
     // Objects
     for (let i = 0; i < WTGM.objects.length; i += 1) {
       WTGM.objects[i].draw(WTGM.ctx);

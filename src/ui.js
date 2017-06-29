@@ -8,14 +8,6 @@ export function addListenerMulti(el, s, fn) {
   }
 }
 
-export function ready(fn) {
-  if (document.readyState !== 'loading') {
-    fn();
-  } else {
-    document.addEventListener('DOMContentLoaded', fn);
-  }
-}
-
 export const initUI = () => {
   // addListenerMulti(
   //   document.querySelector('.startGame'),
@@ -30,5 +22,3 @@ export const initUI = () => {
   //   },
   // );
 };
-
-ready(initUI);

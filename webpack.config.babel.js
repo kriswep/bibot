@@ -17,8 +17,8 @@ module.exports = {
     path: BUILD_DIR,
     filename: production ? '[name].[chunkhash].js' : '[name].[hash].js',
   },
-  devtool: production ? 'sourcemap' : 'eval-source-map',
-  // devtool: production ? false : 'sourcemap',
+  // devtool: production ? 'sourcemap' : 'eval-source-map',
+  devtool: production ? 'sourcemap' : 'sourcemap',
   devServer: {
     hot: false,
     inline: true,
